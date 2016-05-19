@@ -191,8 +191,6 @@ var dataset = null;]]></method>
         row["active"] = dataset.getValue(count, "active");
         row["province_id"] = dataset.getValue(count, "province_id");
        
-         
-        //Actualiza el contador 
         count++;
         return true;
     }
@@ -450,7 +448,7 @@ from datas_forms inner join provinces on datas_forms.province_id=provinces.id_pr
             <expression name="uri" type="constant">https://liit.com.ar/webNG3/img/logo.png</expression>
         </image>
         <label id="15">
-            <property name="backgroundColor">#040433</property>
+            <property name="backgroundColor">#032334</property>
             <property name="fontFamily">"FreeMono"</property>
             <property name="fontSize">16pt</property>
             <property name="fontWeight">bold</property>
