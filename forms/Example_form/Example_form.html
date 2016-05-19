@@ -9,7 +9,172 @@
 <body>
 <div class="fluig-style-guide">
 <form name="form" role="form">
+
+		<label for="name">Nombre: </label> 
+		<input type="text" name="name" id="name" placeholder="Ingrese Nombre" /> <br>
+		
+		<label for="last_name">Apellido: </label> 
+			<input type="text" name="last_name" id="last_name" placeholder="Ingrese Apellido"  /> <br>
+		
+		<label for="identity_card">Cedula: </label> 
+			<input type="text" name="identifyCard" id="identity_card" placeholder="Carnet Identidad"/> <br>
+		
+		<label for="age">Edad: </label>
+			<input type="number" name="age" id="age" placeholder="Edad" min="0" max="100"> <br>		
+		
+		<label for="sex">Sexo: </label>
+			<input type="radio" name="sex" id="male" value="Masculino" > Masculino 
+			<input type="radio" name="sex" id="female" value="Femenino" > Femenino <br>		
+		
+		<label for="email">Email: </label> 
+			<input type="email" name="email" id="email" placeholder="info@email.com"/> <br>
+		
+		<label for="phone">Telefono: </label>
+			<input type="tel" size="3" value="+54" disabled>
+			<input type="tel" name="phone" id="phone" placeholder=" xxxx  xxxxxxx" size="13"> <br>
+		
+		<label for="province">Provincia: </label>
+			<select name= "province" id= "province" dataset= "personalInformation" datasetkey= "id" datasetvalue= "province" addBlankLine=” false ”></select> <br>
+		
+		<label for="active">Activo: </label>
+			<input type="radio" id="active_yes" name="active" value="Si"> Si <input type="radio" id="active_no" name="active" value="No"> No <br>
+			
+		//<input type="submit" id="btn" name="btn" value="Enviar" />	
+
 </form>
 </div>
 </body>
 </html>
+
+
+<script language="javascript">
+
+	function validateForm(form){
+		
+	
+		var Name=form.getvalue("name");
+		var Last_name=form.getvalue("last_name");
+		var Identity_card=form.getvalue("identity_card");
+		var Age=form.getvalue("age");
+		var Male=form.getvalue("male").checked;
+		var Female=form.getvalue("female").checked;
+		var Phone=form.getvalue("phone");
+		var Email=form.getvalue("email");
+		var province=form.getvalue("province");
+		var Active_yes=form.getvalue("active_yes").checked;
+		var Active_no=form.getvalue("active_no").checked;
+		var EmailExpr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	 	var	spaceLetterXpr = /^([a-zA-ZñÑ\s\W]{1,50})*$/;
+	 	var oneSpaces = /^([\s]{1})+$/ ;	
+	
+	 		
+	 		if (Name == "" || oneSpaces.test(Name)|| Name.length < 2 ) 
+	 		{
+	 			alert("Debe completar el campo Nombre:");
+	 			return false;
+	 		}	
+	 		else if (!spaceLetterXpr.test(Name)) 
+	 		{
+	 			alert("El campo nombre solo permite letras");
+	 			return false;
+	 		}
+	 		else if (Name.length >50) 
+	 		{
+	 			alert("El campo nombre excede en longitud");
+	 			return false;
+	 		}
+	
+	 		else if (Last_name == "" || oneSpaces.test(Last_name) || Last_name.length < 2) 
+	 		{
+	 			alert("Debe completar el campo Apellido:");
+	 			return false;
+	 		} 
+	 		else if (!spaceLetterXpr.test(Last_name)) 
+	 		{
+	 			alert("El campo apellido solo permite letras");
+	 			return false;
+	 		}
+	 		else if (Last_name.length >50) 
+	 		{
+	 			alert("El campo apellido excede en longitud");
+	 			return false;
+	 		}
+	
+	 		else if (isNaN(Identity_card)) 
+	 		{
+	 			alert("El campo Cedula debe ser numerico.");
+	 			return false;
+	 		}
+	 		else if ( Identity_card == "" || oneSpaces.test(Identity_card) || Identity_card.length < 8) 
+	 		{
+	 			alert("Debe completar el campo Cedula:");
+	 			return false;
+	 		} 
+	 		else if (Identity_card.length >8) 
+	 		{
+	 			alert("El campo Cedula excede en longitud");
+	 			return false;
+	 		}
+	
+	 		else if ( Age == "" ) 
+	 		{
+	 			alert("Debe completar el campo Edad:");
+	 			return false;
+	 		} 
+	 		else if ( Age<0 || Age>100 ) 
+	 		{
+	 			alert("La edad no es valida");
+	 			return false;
+	 		}	
+	 		else if (isNaN(Age)) 
+	 		{
+	 			alert("El campo edad debe ser numerico.");
+	 			return false;
+	 		}
+	
+	 		else if ( Email == "" || oneSpaces.test(Email)) 
+	 		{
+	 			alert("Debe completar el campo Email: (example@email.com)");
+	 			return false;
+	 		} 
+	 		else if (!EmailExpr.test(Email)) 
+	 		{
+	 			alert("La dirección de correo " + Email + " es incorrecta.");
+	 			return false;
+	 		}
+	 		else if (Email.length >20) 
+	 		{
+	 			alert("El campo email excede en longitud");
+	 			return false;
+	 		}
+	
+	 		else if (Male=="" && Female=="" ) 
+	 	 	{
+	 			alert("Debe indicar sexo: F/M");
+	 			return false;
+	 		}
+	 		else if ( Phone == "" || oneSpaces.test(Phone) || Phone.length < 11) 
+	 		{
+	 			alert("Debe completar el campo Telefono:");
+	 			return false;
+	 		} 
+	 		else if (isNaN(Phone)) 
+	 		{
+	 			alert("El campo telefono debe ser numerico.");
+	 			return false;
+	 		}
+	 		else if (Phone.length >15) 
+	 		{
+	 			alert("El campo telefono excede en longitud");
+	 			return false;
+	 		}
+	
+	 		else if (Active_yes=="" && Active_no=="" ) 
+	 	 	{
+	 			alert("Debe indicar un estado (Activo: Si/No)");
+	 			return false;
+	 		}	 
+	 	 	 
+	}
+
+</script>
