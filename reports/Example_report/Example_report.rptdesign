@@ -1,10 +1,401 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
-    <property name="createdBy">Eclipse BIRT Designer Version 3.7.2.v20120213 Build &lt;3.7.2.v20120214-1408></property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
     <property name="units">in</property>
+    <method name="initialize"><![CDATA[importPackage(Packages.com.datasul.technology.webdesk.dataset.service);
+importPackage(Packages.com.datasul.technology.webdesk.dataset);
+importPackage(Packages.com.datasul.technology.webdesk.search.controller);
+importPackage(Packages.java.util);
+var count = 0;
+var dataset = null;]]></method>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="bidiLayoutOrientation">ltr</property>
     <property name="imageDPI">96</property>
+    <data-sources>
+        <script-data-source name="dsExample_Report" id="7"/>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="JDBC-DataSource_example_report" id="10">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://fluig2.liit.com.ar/jose</property>
+            <property name="odaUser">jose</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">Sm9TZUFnUmFaMTIz</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="DataSetExample_Report" id="9">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">id_data</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">last_name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">identity_card</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">age</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">sex</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">phone</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">email</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">active</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">province_id</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id_data</property>
+                </structure>
+                <structure>
+                    <property name="columnName">name</property>
+                </structure>
+                <structure>
+                    <property name="columnName">last_name</property>
+                </structure>
+                <structure>
+                    <property name="columnName">identity_card</property>
+                </structure>
+                <structure>
+                    <property name="columnName">age</property>
+                </structure>
+                <structure>
+                    <property name="columnName">sex</property>
+                </structure>
+                <structure>
+                    <property name="columnName">phone</property>
+                </structure>
+                <structure>
+                    <property name="columnName">email</property>
+                </structure>
+                <structure>
+                    <property name="columnName">active</property>
+                </structure>
+                <structure>
+                    <property name="columnName">province_id</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id_data</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">last_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">identity_card</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">age</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">sex</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">phone</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">email</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">active</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">province_id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">dsExample_Report</property>
+            <method name="fetch"><![CDATA[if (dataset != null) {
+    if (count <  dataset.rowsCount){
+        //instala el objeto de la línea
+
+        row["name"] = dataset.getValue(count, "name");
+        row["last_name"] = dataset.getValue(count, "last_name");
+        row["identity_card"] = dataset.getValue(count, "identity_card");
+        row["age"] = dataset.getValue(count, "age");
+        row["sex"] = dataset.getValue(count, "sex");
+        row["phone"] = dataset.getValue(count, "phone");
+        row["email"] = dataset.getValue(count, "email");
+        row["active"] = dataset.getValue(count, "active");
+        row["province_id"] = dataset.getValue(count, "province_id");
+       
+         
+        //Actualiza el contador 
+        count++;
+        return true;
+    }
+    return false;
+}]]></method>
+        </script-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="DataSet_example_report_query" id="11">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">name</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">last_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">last_name</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">last_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">identity_card</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">identity_card</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">identity_card</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">age</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">age</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">age</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">sex</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">sex</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">sex</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">phone</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">phone</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">phone</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">email</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">email</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">email</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">active</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">active</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">active</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">province</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">province_id</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">province</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">last_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">identity_card</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">age</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">sex</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">phone</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">email</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">active</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">province</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">JDBC-DataSource_example_report</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">last_name</property>
+                    <property name="nativeName">last_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">identity_card</property>
+                    <property name="nativeName">identity_card</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">age</property>
+                    <property name="nativeName">age</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">sex</property>
+                    <property name="nativeName">sex</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">phone</property>
+                    <property name="nativeName">phone</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">email</property>
+                    <property name="nativeName">email</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">active</property>
+                    <property name="nativeName">active</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">province</property>
+                    <property name="nativeName">province</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[SELECT 
+
+datas_forms.name,
+datas_forms.last_name,
+datas_forms.identity_card,
+datas_forms.age,
+datas_forms.sex,
+datas_forms.phone,
+datas_forms.email,
+datas_forms.active,
+provinces.province
+
+from datas_forms inner join provinces on datas_forms.province_id=provinces.id_province;]]></xml-property>
+        </oda-data-set>
+    </data-sets>
     <styles>
         <style name="report" id="4">
             <property name="fontFamily">sans-serif</property>
@@ -49,4 +440,370 @@
             </page-footer>
         </simple-master-page>
     </page-setup>
+    <body>
+        <image id="13">
+            <property name="marginLeft">170pt</property>
+            <property name="marginBottom">0pt</property>
+            <property name="height">1.125in</property>
+            <property name="width">2.90625in</property>
+            <property name="source">url</property>
+            <expression name="uri" type="constant">https://liit.com.ar/webNG3/img/logo.png</expression>
+        </image>
+        <label id="15">
+            <property name="backgroundColor">#040433</property>
+            <property name="fontFamily">"FreeMono"</property>
+            <property name="fontSize">16pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#EEEEEC</property>
+            <property name="textAlign">center</property>
+            <text-property name="text">Example Report</text-property>
+        </label>
+        <table id="243">
+            <property name="borderBottomColor">#000000</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">medium</property>
+            <property name="borderLeftColor">#000000</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">medium</property>
+            <property name="borderRightColor">#000000</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">medium</property>
+            <property name="borderTopColor">#000000</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">medium</property>
+            <property name="verticalAlign">top</property>
+            <property name="width">7.947916666666667in</property>
+            <property name="dataSet">DataSet_example_report_query</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">name</property>
+                    <text-property name="displayName">name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">last_name</property>
+                    <text-property name="displayName">last_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["last_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">identity_card</property>
+                    <text-property name="displayName">identity_card</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["identity_card"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">age</property>
+                    <text-property name="displayName">age</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["age"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">sex</property>
+                    <text-property name="displayName">sex</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["sex"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">phone</property>
+                    <text-property name="displayName">phone</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["phone"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">email</property>
+                    <text-property name="displayName">email</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["email"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">active</property>
+                    <text-property name="displayName">active</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["active"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">province</property>
+                    <text-property name="displayName">province_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["province"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="292">
+                <property name="width">0.8854166666666666in</property>
+            </column>
+            <column id="293">
+                <property name="width">0.8854166666666666in</property>
+            </column>
+            <column id="294">
+                <property name="width">0.8854166666666666in</property>
+            </column>
+            <column id="295">
+                <property name="width">0.4270833333333333in</property>
+            </column>
+            <column id="296">
+                <property name="width">0.4270833333333333in</property>
+            </column>
+            <column id="297">
+                <property name="width">1.3229166666666667in</property>
+            </column>
+            <column id="298">
+                <property name="width">1.3645833333333333in</property>
+            </column>
+            <column id="299">
+                <property name="width">0.5625in</property>
+            </column>
+            <column id="300">
+                <property name="width">1.1875in</property>
+            </column>
+            <header>
+                <row id="244">
+                    <property name="backgroundColor">#204A87</property>
+                    <property name="fontFamily">"FreeMono"</property>
+                    <property name="fontSize">9pt</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="color">#EEEEEC</property>
+                    <property name="height">0.3229166666666667in</property>
+                    <cell id="245">
+                        <label id="246">
+                            <text-property name="text">Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="247">
+                        <label id="248">
+                            <text-property name="text">Last Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="249">
+                        <label id="250">
+                            <text-property name="text">DNI</text-property>
+                        </label>
+                    </cell>
+                    <cell id="251">
+                        <label id="252">
+                            <text-property name="text">Age</text-property>
+                        </label>
+                    </cell>
+                    <cell id="253">
+                        <label id="254">
+                            <text-property name="text">Sex</text-property>
+                        </label>
+                    </cell>
+                    <cell id="255">
+                        <label id="256">
+                            <text-property name="text">Phone</text-property>
+                        </label>
+                    </cell>
+                    <cell id="257">
+                        <label id="258">
+                            <text-property name="text">Email</text-property>
+                        </label>
+                    </cell>
+                    <cell id="259">
+                        <label id="260">
+                            <text-property name="text">Status</text-property>
+                        </label>
+                    </cell>
+                    <cell id="261">
+                        <label id="262">
+                            <text-property name="text">Province</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="263">
+                    <property name="backgroundColor">#888A85</property>
+                    <property name="fontFamily">serif</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="color">#000000</property>
+                    <property name="borderBottomStyle">none</property>
+                    <property name="borderLeftStyle">none</property>
+                    <property name="borderRightStyle">none</property>
+                    <property name="borderTopStyle">none</property>
+                    <property name="textAlign">center</property>
+                    <cell id="264">
+                        <data id="265">
+                            <property name="borderBottomColor">#C17D11</property>
+                            <property name="borderBottomStyle">dashed</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#C17D11</property>
+                            <property name="borderLeftStyle">dashed</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#C17D11</property>
+                            <property name="borderRightStyle">dashed</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#C17D11</property>
+                            <property name="borderTopStyle">dashed</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="resultSetColumn">name</property>
+                        </data>
+                    </cell>
+                    <cell id="266">
+                        <data id="267">
+                            <property name="borderBottomColor">#C17D11</property>
+                            <property name="borderBottomStyle">dashed</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#C17D11</property>
+                            <property name="borderLeftStyle">dashed</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#C17D11</property>
+                            <property name="borderRightStyle">dashed</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#C17D11</property>
+                            <property name="borderTopStyle">dashed</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="resultSetColumn">last_name</property>
+                        </data>
+                    </cell>
+                    <cell id="268">
+                        <data id="269">
+                            <property name="borderBottomColor">#C17D11</property>
+                            <property name="borderBottomStyle">dashed</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#C17D11</property>
+                            <property name="borderLeftStyle">dashed</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#C17D11</property>
+                            <property name="borderRightStyle">dashed</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#C17D11</property>
+                            <property name="borderTopStyle">dashed</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="resultSetColumn">identity_card</property>
+                        </data>
+                    </cell>
+                    <cell id="270">
+                        <data id="271">
+                            <property name="borderBottomColor">#C17D11</property>
+                            <property name="borderBottomStyle">dashed</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#C17D11</property>
+                            <property name="borderLeftStyle">dashed</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#C17D11</property>
+                            <property name="borderRightStyle">dashed</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#C17D11</property>
+                            <property name="borderTopStyle">dashed</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="resultSetColumn">age</property>
+                        </data>
+                    </cell>
+                    <cell id="272">
+                        <data id="273">
+                            <property name="borderBottomColor">#C17D11</property>
+                            <property name="borderBottomStyle">dashed</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#C17D11</property>
+                            <property name="borderLeftStyle">dashed</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#C17D11</property>
+                            <property name="borderRightStyle">dashed</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#C17D11</property>
+                            <property name="borderTopStyle">dashed</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="resultSetColumn">sex</property>
+                        </data>
+                    </cell>
+                    <cell id="274">
+                        <data id="275">
+                            <property name="borderBottomColor">#C17D11</property>
+                            <property name="borderBottomStyle">dashed</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#C17D11</property>
+                            <property name="borderLeftStyle">dashed</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#C17D11</property>
+                            <property name="borderRightStyle">dashed</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#C17D11</property>
+                            <property name="borderTopStyle">dashed</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="resultSetColumn">phone</property>
+                        </data>
+                    </cell>
+                    <cell id="276">
+                        <data id="277">
+                            <property name="borderBottomColor">#C17D11</property>
+                            <property name="borderBottomStyle">dashed</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#C17D11</property>
+                            <property name="borderLeftStyle">dashed</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#C17D11</property>
+                            <property name="borderRightStyle">dashed</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#C17D11</property>
+                            <property name="borderTopStyle">dashed</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="resultSetColumn">email</property>
+                        </data>
+                    </cell>
+                    <cell id="278">
+                        <data id="279">
+                            <property name="borderBottomColor">#C17D11</property>
+                            <property name="borderBottomStyle">dashed</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#C17D11</property>
+                            <property name="borderLeftStyle">dashed</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#C17D11</property>
+                            <property name="borderRightStyle">dashed</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#C17D11</property>
+                            <property name="borderTopStyle">dashed</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="resultSetColumn">active</property>
+                        </data>
+                    </cell>
+                    <cell id="280">
+                        <data id="281">
+                            <property name="borderBottomColor">#C17D11</property>
+                            <property name="borderBottomStyle">dashed</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#C17D11</property>
+                            <property name="borderLeftStyle">dashed</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#C17D11</property>
+                            <property name="borderRightStyle">dashed</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#C17D11</property>
+                            <property name="borderTopStyle">dashed</property>
+                            <property name="borderTopWidth">thin</property>
+                            <property name="resultSetColumn">province</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="282">
+                    <property name="backgroundColor">#729FCF</property>
+                    <cell id="283"/>
+                    <cell id="284"/>
+                    <cell id="285"/>
+                    <cell id="286"/>
+                    <cell id="287"/>
+                    <cell id="288"/>
+                    <cell id="289"/>
+                    <cell id="290"/>
+                    <cell id="291"/>
+                </row>
+            </footer>
+        </table>
+        <text id="14">
+            <property name="backgroundColor">#204A87</property>
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<div class="style_7" style=" text-align:center; overflow:hidden;">
+
+	<a href="https://liit.com.ar/#ajax/dashboard.php/" target="_blank" style="border-radius:5px;color:#fff;background:#00abf0;margin:0 auto;text-decoration:none;display:inline-block;padding:10px;">www.liit.com.ar</a> 
+	<a href="mailto:alejandroagraz@gmail.com" target="_blank" style="border-radius:5px;color:#fff;background:#00abf0;margin:0 auto;text-decoration:none;display:inline-block;padding:10px;">contacto@email.com</a> 
+	<br>
+	<p style="color:#020545;font-weight:bold;">Autor: "Jose Agraz"</p>
+
+</div>]]></text-property>
+        </text>
+    </body>
 </report>
